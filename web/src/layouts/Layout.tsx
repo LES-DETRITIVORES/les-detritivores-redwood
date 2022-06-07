@@ -1,7 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { ChevronDoubleLeftIcon, XIcon } from "@heroicons/react/solid";
-import { Link } from "@redwoodjs/router";
+import { Link, Router } from "@redwoodjs/router";
 import { Fragment, useState } from "react";
+
 const Layout = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false);
   return (
@@ -9,9 +10,6 @@ const Layout = ({ children }) => {
       <div className="flex flex-col justify-between h-screen">
         <div id="start">
           <div className="grid grid-cols-1 gap-4 pb-14">
-            {/* <div className="p-2 space-y-2">
-                        <ToggleTheme />
-                      </div> */}
             <div className="flex flex-col items-center justify-center">
               <Link to="/">
                 <svg

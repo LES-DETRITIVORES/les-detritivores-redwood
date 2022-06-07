@@ -33,7 +33,6 @@ const HomePage = () => {
       setIsDesktop(false);
     }
   });
-  console.log(data.story?.content);
   return (
     <>
       <MetaTags title="Home" description="Home page" />
@@ -145,8 +144,8 @@ const HomePage = () => {
                                 className={cn(
                                   "duration-700 ease-in-out group-hover:opacity-75 !rounded-md object-contain",
                                   isLoading
-                                    ? "scale-110 blur-2xl grayscale !rounded-md"
-                                    : "scale-100 blur-0 grayscale-0 !rounded-md",
+                                    ? "blur-xl !rounded-2xl"
+                                    : "blur-0 !rounded-2xl",
                                 )}
                                 src={item.image}
                                 width={item.imageWidth}

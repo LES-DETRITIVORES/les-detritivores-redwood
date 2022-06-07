@@ -27,8 +27,10 @@
     "@heroicons/react": "^1.0.6",
     "axios": "^0.27.2",
     "framer-motion": "^6.3.10",
+    "nprogress": "^0.2.0",
     "react-html-parser": "^2.0.2",
     "react-reveal": "^1.2.2",
+    "redwood-nprogress": "^1.0.1",
     "storyblok-js-client": "^4.5.2"
   }
 }

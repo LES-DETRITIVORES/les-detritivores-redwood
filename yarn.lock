@@ -5977,6 +5977,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/nprogress@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@types/nprogress@npm:0.2.0"
+  checksum: e5c3737661f3a4dd2e94eb406a348865a3067c0964b682c9b43d184f4064159923c2a3dcb44fcf4c8b577ca3d6b87b6aa3f249631c97a6307c963302b337e26e
+  languageName: node
+  linkType: hard
+
 "@types/parse-json@npm:^4.0.0":
   version: 4.0.0
   resolution: "@types/parse-json@npm:4.0.0"
@@ -7203,6 +7210,7 @@ __metadata:
     "@redwoodjs/api": 1.5.1
     "@redwoodjs/graphql-server": 1.5.1
     cross-undici-fetch: ^0.4.5
+    nodemailer: ^6.7.5
   languageName: unknown
   linkType: soft
 
@@ -13921,27 +13929,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"headlessui@npm:^0.0.0":
-  version: 0.0.0
-  resolution: "headlessui@npm:0.0.0"
-  checksum: 7659a8dac09c1771edd49603dabbae24bff94c6122fd01952a7660d659a457f9e997c45505a4224a70cf8332a4443b87c5500b8d35dd6fc00d99ac5afcd5eeb3
-  languageName: node
-  linkType: hard
-
-"heroicon@npm:^0.0.2":
-  version: 0.0.2
-  resolution: "heroicon@npm:0.0.2"
-  checksum: 0a7c97bc15cebcde3499565617b852c7515a23a037bcf47e6753a0efb6b31444fa2d64c1b502b7ed338a934cc2cb0a870cdffed69816e7b92ed380e25d8e68c3
-  languageName: node
-  linkType: hard
-
-"heroicons@npm:^1.0.6":
-  version: 1.0.6
-  resolution: "heroicons@npm:1.0.6"
-  checksum: 4242432603d513e27cb214a5e1ec6008cdca2262ea25b328c01ed74a7b5b365e4fb25d676e78e3198e88e0e766ca59a68a9ad4b2cfd6538884b6352a0367934c
-  languageName: node
-  linkType: hard
-
 "hey-listen@npm:^1.0.8":
   version: 1.0.8
   resolution: "hey-listen@npm:1.0.8"
@@ -17907,6 +17894,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nodemailer@npm:^6.7.5":
+  version: 6.7.5
+  resolution: "nodemailer@npm:6.7.5"
+  checksum: 3aa0cdc42e041cc4109f96529ddaf9d0d4831589fd9ea0d9c8b521656288a3bc37657c727e19f24bb811f0bcc60dee985a75ad34acc1b216eba72c515e4ed1c1
+  languageName: node
+  linkType: hard
+
 "nodemon@npm:2.0.16":
   version: 2.0.16
   resolution: "nodemon@npm:2.0.16"
@@ -18037,6 +18031,13 @@ __metadata:
     gauge: ^4.0.3
     set-blocking: ^2.0.0
   checksum: 0cacedfbc2f6139c746d9cd4a85f62718435ad0ca4a2d6459cd331dd33ae58206e91a0742c1558634efcde3f33f8e8e7fd3adf1bfe7978310cf00bd55cccf890
+  languageName: node
+  linkType: hard
+
+"nprogress@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "nprogress@npm:0.2.0"
+  checksum: eab9a923a1ad1eed71a455ecfbc358442dd9bcd71b9fa3fa1c67eddf5159360b182c218f76fca320c97541a1b45e19ced04e6dcb044a662244c5419f8ae9e821
   languageName: node
   linkType: hard
 
@@ -20481,6 +20482,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"redwood-nprogress@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "redwood-nprogress@npm:1.0.1"
+  dependencies:
+    "@types/nprogress": ^0.2.0
+    nprogress: ^0.2.0
+  peerDependencies:
+    "@emotion/core": ^10.0.0
+    "@redwoodjs/router": ^0.x
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: 121b998f9d402e85a4957408db5f94f7d85914e326b05129ef195db5e13fe614e637fb5954dfd061ead6eaaf66404944c7515584dbed53bbf8baf9018b38f99f
+  languageName: node
+  linkType: hard
+
 "refractor@npm:^3.6.0":
   version: 3.6.0
   resolution: "refractor@npm:3.6.0"
@@ -21067,11 +21083,10 @@ __metadata:
     "@redwoodjs/core": 1.5.1
     axios: ^0.27.2
     framer-motion: ^6.3.10
-    headlessui: ^0.0.0
-    heroicon: ^0.0.2
-    heroicons: ^1.0.6
+    nprogress: ^0.2.0
     react-html-parser: ^2.0.2
     react-reveal: ^1.2.2
+    redwood-nprogress: ^1.0.1
     storyblok-js-client: ^4.5.2
   languageName: unknown
   linkType: soft
