@@ -3,11 +3,9 @@ import { MetaTags } from "@redwoodjs/web";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Alert from "src/components/Alert";
 import Layout from "src/layouts/Layout";
-// import { sendEmail } from "src/lib/email";
 import { StoryBlok } from "src/types";
 import Fade from "react-reveal/Fade";
 import { richText } from "src/utils/storyblok";
-
 const QuotePage = () => {
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -27,8 +25,6 @@ const QuotePage = () => {
     structure: "",
     message: "",
     error: "",
-    isError: false,
-    isSuccess: false,
   });
   useEffect(() => {
     fetch(
@@ -49,19 +45,17 @@ const QuotePage = () => {
   });
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // sendEmail({ to: "", subject: "", ...form });
-    // if (form.error) {
-    //   setForm({ ...form, isError: true });
-    // }
-    // if (form.isSuccess) {
-    //   setForm({ ...form, isSuccess: true });
-    // }    sendEmail({ to: "", subject: "", ...form });
-    // if (form.error) {
-    //   setForm({ ...form, isError: true });
-    // }
-    // if (form.isSuccess) {
-    //   setForm({ ...form, isSuccess: true });
-    // }
+    console.log(e)
+  }
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try{
+      console.log(e)
+      setIsError(true)
+    } catch(e) {
+      console.log("obj:" + e)
+      setIsError(false)
+    }
   };
 
   return (
@@ -93,21 +87,21 @@ const QuotePage = () => {
               delay={500}
               distance="30px"
             >
-              <div className="max-w-screen my-3 justify-center content-center">
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 sm:grid-cols-2 mx-0 sm:mx-5 md:mx-5 my-2 space-x-10">
+              <div className="content-center justify-center my-3 max-w-screen">
+                <div className="grid grid-cols-1 mx-0 my-2 space-x-10 md:grid-cols-2 xl:grid-cols-2 sm:grid-cols-2 sm:mx-5 md:mx-5">
                   <div className="flex justify-center">
                     <form
-                      className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 xl:w-100 md:w-96 sm:grid-cols-1 gap-x-2 gap-y-3 justify-center"
+                      className="grid justify-center grid-cols-1 md:grid-cols-1 xl:grid-cols-2 xl:w-100 md:w-96 sm:grid-cols-1 gap-x-2 gap-y-3"
                       onSubmit={onSubmit}
                     >
                       <div className="flex flex-col">
                         <label className="font-light">Vous êtes:*</label>
                         <input
-                          className="bg-white dark:bg-neutral-900 border-2 border-orangeDTTV w-26 h-12 p-3 rounded-md transition focus:outline-none"
+                          className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            (form.who = e.target.value)
+                          onChange={(e: ChangeEvent<HTMLInputElement>) => handleSubmit(e)
                           }
+                          value={form.who}
                         />
                       </div>
                       <div className="flex flex-col">
@@ -115,84 +109,105 @@ const QuotePage = () => {
                           Nombre de repas servis par jour:*
                         </label>
                         <input
-                          className="bg-white dark:bg-neutral-900 border-2 border-orangeDTTV w-26 h-12 p-3 rounded-md transition focus:outline-none"
+                          className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            (form.numbers = e.target.value)
+                          onChange={(e: ChangeEvent<HTMLInputElement>) => handleSubmit(e)
                           }
+                          value={form.numbers}
                         />
                       </div>
                       <div className="flex flex-col">
                         <label className="font-light">Structure:*</label>
                         <input
-                          className="bg-white dark:bg-neutral-900 border-2 border-orangeDTTV w-26 h-12 p-3 rounded-md transition focus:outline-none"
+                          className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            (form.structure = e.target.value)
+                            setForm({
+                              ...form,
+                              structure: e.target.value
+                            })
                           }
                         />
                       </div>
                       <div className="flex flex-col">
                         <label className="font-light">Fonction:*</label>
                         <input
-                          className="bg-white dark:bg-neutral-900 border-2 border-orangeDTTV w-26 h-12 p-3 rounded-md transition focus:outline-none"
+                          className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            (form.dfunction = e.target.value)
+                            setForm({
+                              ...form,
+                              dfunction: e.target.value
+                            })
                           }
                         />
                       </div>
                       <div className="flex flex-col">
                         <label className="font-light">Nom:*</label>
                         <input
-                          className="bg-white dark:bg-neutral-900 border-2 border-orangeDTTV w-26 h-12 p-3 rounded-md transition focus:outline-none"
+                          className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            (form.name = e.target.value)
+                            setForm({
+                              ...form,
+                              name: e.target.value
+                            })
                           }
                         />
                       </div>
                       <div className="flex flex-col">
                         <label className="font-light">Prénom:*</label>
                         <input
-                          className="bg-white dark:bg-neutral-900 border-2 border-orangeDTTV w-26 h-12 p-3 rounded-md transition focus:outline-none"
+                          className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            (form.lastname = e.target.value)
+                            setForm({
+                              ...form,
+                              lastname: e.target.value
+                            })
                           }
                         />
                       </div>
                       <div className="flex flex-col">
                         <label className="font-light">Email:*</label>
                         <input
-                          className="bg-white dark:bg-neutral-900 border-2 border-orangeDTTV w-26 h-12 p-3 rounded-md transition focus:outline-none"
+                          className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            (form.email = e.target.value)
+                            setForm({
+                              ...form,
+                              email: e.target.value
+                            })
                           }
                         />
                       </div>
                       <div className="flex flex-col">
                         <label className="font-light">Téléphone:*</label>
                         <input
-                          className="bg-white dark:bg-neutral-900 border-2 border-orangeDTTV w-26 h-12 p-3 rounded-md transition focus:outline-none"
+                          className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            (form.phone = e.target.value)
+                            setForm({
+                              ...form,
+                              phone: e.target.value
+                            })
                           }
                         />
                       </div>
                       <div className="flex flex-col justify-center">
                         <label className="font-light">Message:*</label>
                         <textarea
-                          className="w-full h-auto px-3 py-2 focus:outline-none bg-white dark:bg-neutral-900 border-2 border-orangeDTTV w-26 p-3 rounded-md transition text-black dark:text-white"
+                          className="w-full h-auto p-3 px-3 py-2 text-black transition bg-white border-2 rounded-md focus:outline-none dark:bg-neutral-900 border-orangeDTTV w-26 dark:text-white"
                           autoComplete="off"
                           rows={5}
                           onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-                            (form.message = e.target.value)
+                            setForm({
+                              ...form,
+                              message: e.target.value
+                            })
                           }
                         />
-                        <div className="flex justify-center items-center p-2">
+                        <div className="flex items-center justify-center p-2">
                           <button
                             type="submit"
                             className="rounded-full relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2 active:border-orange-600 active:shadow-none shadow-lg bg-gradient-to-tr from-orange-500 to-orange-600 border-orangeDTTV text-white"
@@ -212,16 +227,16 @@ const QuotePage = () => {
                         <div className="space-y-4">
                           <h1 className="text-left pb-2 text-2xl lg:text-3xl md:!text-4xl sm:text-3xl xl:!text-6xl 2xl:!text-6xl font-bold text-orangeDTTV -rotate-2">
                             {data?.story?.content?.MoneyTitle}
-                            <div className="bg-growing-underline-black hidden">
+                            <div className="hidden bg-growing-underline-black">
                               &nbsp;
                             </div>
                           </h1>
                           <div className="space-y-4">
-                            <p className="text-xl sm:text-md font-bold">
+                            <p className="text-xl font-bold sm:text-md">
                               Vous aussi, valorisez vos biodéchets
                             </p>
                             <div className="flex flex-col space-y-2">
-                              <p className="font-light text-xl space-y-2">
+                              <p className="space-y-2 text-xl font-light">
                                 {richText(data?.story?.content?.MoneyText)}
                               </p>
                             </div>
@@ -233,9 +248,9 @@ const QuotePage = () => {
                         <h1 className="text-left pb-2 text-2xl lg:text-3xl md:!text-4xl sm:text-3xl xl:!text-6xl 2xl:!text-6xl font-bold text-orangeDTTV -rotate-2 bg-neutral-100 dark:bg-neutral-800 h-20 rounded-lg animate-pulse"></h1>
                         <br />
                         <div className="space-y-4">
-                          <p className="text-xl sm:text-md font-bold bg-neutral-100 dark:bg-neutral-800 h-28 rounded-lg animate-pulse"></p>
+                          <p className="text-xl font-bold rounded-lg sm:text-md bg-neutral-100 dark:bg-neutral-800 h-28 animate-pulse"></p>
                           <div className="flex flex-col space-y-2">
-                            <p className="font-light text-xl space-y-2 bg-neutral-100 dark:bg-neutral-800 h-20 rounded-lg animate-pulse"></p>
+                            <p className="h-20 space-y-2 text-xl font-light rounded-lg bg-neutral-100 dark:bg-neutral-800 animate-pulse"></p>
                           </div>
                         </div>
                       </div>
