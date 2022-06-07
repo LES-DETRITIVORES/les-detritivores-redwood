@@ -1,10 +1,100 @@
-/**
- * START --- SETUP TAILWINDCSS EDIT
- *
- * `yarn rw setup ui tailwindcss` placed these imports here
- * to inject Tailwind's styles into your CSS.
- * For more information, see: https://tailwindcss.com/docs/installation#include-tailwind-in-your-css
- */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700;900&display=swap");
+@import url("//fonts.cdnfonts.com/css/sf-ui-display");
+@layer utilities {
+  .content {
+    content: "";
+  }
+}
+html {
+  @apply overflow-x-hidden select-none;
+}
+body {
+  @apply w-screen overflow-x-hidden font-normal transition bg-white dark:bg-neutral-900 font-fira;
+}
+p {
+  @apply antialiased font-sf-ui;
+}
+span {
+  @apply text-xl antialiased font-bold font-sf-ui;
+}
+h1 {
+  font-family: "Fira Sans", sans-serif;
+}
+h1:after,
+h1:before {
+  @apply block m-0 content;
+}
+::-webkit-scrollbar {
+  @apply !hidden;
+}
+::-webkit-scrollbar-button {
+  @apply !hidden;
+}
+::-webkit-scrollbar-track {
+  @apply !hidden;
+}
+::-webkit-scrollbar-track-piece {
+  @apply !hidden;
+}
+::-webkit-scrollbar-thumb {
+  @apply !hidden;
+}
+::-webkit-scrollbar-corner {
+  @apply !hidden;
+}
+.fancy {
+  @apply w-20 border-t-4 border-solid;
+}
+.fancy-title {
+  @apply w-16 border-t-4 border-solid md:w-24;
+}
+img {
+  @apply transition duration-300;
+}
+#start {
+  @apply bg-greenDTTV bg-gradient-to-r from-greenDTTV to-greenDTTV dark:bg-gradient-to-r dark:from-orangeDTTV dark:to-orangeDTTV !h-56 border-t-0 text-white pb-1;
+  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 42%, 0% 100%) !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 42%, 0% 100%) !important;
+}
+
+#menu {
+  @apply bg-rose-500 !h-full text-white;
+  clip-path: polygon(0 0, 100% 0%, 100% 42%, 0% 100%) !important;
+}
+
+#footer {
+  @apply text-white border-t-0 bg-greenDTTV bg-gradient-to-r from-greenDTTV to-greenDTTV dark:bg-gradient-to-r dark:from-orangeDTTV dark:to-orangeDTTV md:w-auto;
+  -webkit-clip-path: polygon(100% 3%, 0 100%, 100% 100%);
+  clip-path: polygon(100% 3%, 0 100%, 100% 100%);
+}
+
+#nprogress .bar {
+  @apply !bg-white;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #fff, 0 0 5px #fff !important;
+}
+
+#nprogress .spinner-icon {
+  @apply !border-l-white !border-t-white;
+}
+
+.width-pessac {
+  @apply !w-screen;
+}
+.width {
+  @apply !w-36;
+}
+.height {
+  @apply !h-36;
+}
+label {
+  @apply font-light;
+}
+button:disabled {
+  @apply transition cursor-not-allowed animate-bounce;
+}
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
