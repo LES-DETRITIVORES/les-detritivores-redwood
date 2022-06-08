@@ -6,6 +6,7 @@ import Layout from "src/layouts/Layout";
 import { StoryBlok } from "src/types";
 import Fade from "react-reveal/Fade";
 import { richText } from "src/utils/storyblok";
+// import { sendEmail } from "src/lib/email";
 const QuotePage = () => {
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -24,6 +25,7 @@ const QuotePage = () => {
     lastname: "",
     structure: "",
     message: "",
+    success: "",
     error: "",
   });
   useEffect(() => {
@@ -43,19 +45,12 @@ const QuotePage = () => {
       setIsDesktop(false);
     }
   });
+
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.persist();
     e.preventDefault();
     console.log(e);
-  };
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      console.log(e);
-      setIsError(true);
-    } catch (e) {
-      console.log("obj:" + e);
-      setIsError(false);
-    }
+    // sendEmail({ to: "", subject: "", ...form });
   };
 
   return (
@@ -91,6 +86,7 @@ const QuotePage = () => {
                 <div className="grid grid-cols-1 mx-0 my-2 space-x-10 md:grid-cols-2 xl:grid-cols-2 sm:grid-cols-2 sm:mx-5 md:mx-5">
                   <div className="flex justify-center">
                     <form
+                      id="form"
                       className="grid justify-center grid-cols-1 md:grid-cols-1 xl:grid-cols-2 xl:w-100 md:w-96 sm:grid-cols-1 gap-x-2 gap-y-3"
                       onSubmit={onSubmit}
                     >
@@ -99,10 +95,10 @@ const QuotePage = () => {
                         <input
                           className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            handleSubmit(e)
-                          }
-                          value={form.who}
+                          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                            e.persist();
+                            setForm({ ...form, who: e.target.value });
+                          }}
                         />
                       </div>
                       <div className="flex flex-col">
@@ -112,10 +108,10 @@ const QuotePage = () => {
                         <input
                           className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            handleSubmit(e)
-                          }
-                          value={form.numbers}
+                          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                            e.persist();
+                            setForm({ ...form, numbers: e.target.value });
+                          }}
                         />
                       </div>
                       <div className="flex flex-col">
@@ -123,12 +119,13 @@ const QuotePage = () => {
                         <input
                           className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                            e.persist();
                             setForm({
                               ...form,
                               structure: e.target.value,
-                            })
-                          }
+                            });
+                          }}
                         />
                       </div>
                       <div className="flex flex-col">
@@ -136,12 +133,13 @@ const QuotePage = () => {
                         <input
                           className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                            e.persist();
                             setForm({
                               ...form,
                               dfunction: e.target.value,
-                            })
-                          }
+                            });
+                          }}
                         />
                       </div>
                       <div className="flex flex-col">
@@ -149,12 +147,13 @@ const QuotePage = () => {
                         <input
                           className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                            e.persist();
                             setForm({
                               ...form,
                               name: e.target.value,
-                            })
-                          }
+                            });
+                          }}
                         />
                       </div>
                       <div className="flex flex-col">
@@ -162,12 +161,13 @@ const QuotePage = () => {
                         <input
                           className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                            e.persist();
                             setForm({
                               ...form,
                               lastname: e.target.value,
-                            })
-                          }
+                            });
+                          }}
                         />
                       </div>
                       <div className="flex flex-col">
@@ -175,12 +175,13 @@ const QuotePage = () => {
                         <input
                           className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                            e.persist();
                             setForm({
                               ...form,
                               email: e.target.value,
-                            })
-                          }
+                            });
+                          }}
                         />
                       </div>
                       <div className="flex flex-col">
@@ -188,12 +189,13 @@ const QuotePage = () => {
                         <input
                           className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                            e.persist();
                             setForm({
                               ...form,
                               phone: e.target.value,
-                            })
-                          }
+                            });
+                          }}
                         />
                       </div>
                       <div className="flex flex-col justify-center">
@@ -202,12 +204,13 @@ const QuotePage = () => {
                           className="w-full h-auto p-3 px-3 py-2 text-black transition bg-white border-2 rounded-md focus:outline-none dark:bg-neutral-900 border-orangeDTTV w-26 dark:text-white"
                           autoComplete="off"
                           rows={5}
-                          onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+                          onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+                            e.persist();
                             setForm({
                               ...form,
                               message: e.target.value,
-                            })
-                          }
+                            });
+                          }}
                         />
                         <div className="flex items-center justify-center p-2">
                           <button

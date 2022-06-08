@@ -1,4 +1,5 @@
 import * as nodemailer from "nodemailer";
+import { sendTestEmail } from "src/services/email";
 
 interface Options {
   to: string | string[];
@@ -25,22 +26,34 @@ export async function sendEmail({
   phone,
   message,
 }: Options) {
-  console.log("Sending email to:", to);
-
-  // create reusable transporter object using SendInBlue for SMTP
+  await sendTestEmail({
+    emailAddress: to,
+    subject: "",
+    who: who,
+    numbers: numbers,
+    structure: structure,
+    dfunction: dfunction,
+    lastname: lastname,
+    email: email,
+    phone: phone,
+    message: message,
+  });
   const transporter = nodemailer.createTransport({
-    host: "smtp-relay.sendinblue.com",
+    host: "smtp.office365.com",
     port: 587,
-    secure: false, // true for 465, false for other ports
+    tls: {
+      ciphers: "SSLv3",
+      rejectUnathorized: false,
+    },
     auth: {
-      user: "your@email.com",
-      pass: process.env.SEND_IN_BLUE_KEY,
+      user: "bonjour@les-detritivores.co",
+      pass: "Brazza33!",
     },
   });
 
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: '"Your Name" <your@email.com>',
+    from: "bonjour@les-detritivores.co",
     to: Array.isArray(to) ? to : [to], // list of receivers
     subject, // Subject line
     text: `[Devis] \n\n Vous êtes: ${who} \n Nombre de repas servis par j: ${numbers} \n Structure: ${structure}\n Fonction: ${dfunction}\n Nom: ${name}\n Prénom: ${lastname}\n Email: ${email}\n Téléphone: ${phone}\n\n${message}`,

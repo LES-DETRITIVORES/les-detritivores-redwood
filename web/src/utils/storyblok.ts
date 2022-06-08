@@ -1,4 +1,4 @@
-import { fetch } from 'cross-undici-fetch'
+import { fetch } from "cross-undici-fetch";
 import parser from "react-html-parser";
 import StoryBlokClient, { Richtext } from "storyblok-js-client";
 const token = "4Sl5OG2kesCX0K97UTd0Wwtt";
