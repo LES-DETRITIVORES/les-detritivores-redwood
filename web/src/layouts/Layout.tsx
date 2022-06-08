@@ -5,6 +5,33 @@ import { Fragment, useState } from "react";
 
 const Layout = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const pages = [
+    {
+      name: "Accueil",
+      href: "/",
+      current: false,
+    },
+    {
+      name: "Collecte",
+      href: "/collection",
+      current: false,
+    },
+    {
+      name: "Sensibilisation",
+      href: "/sensitization",
+      current: false,
+    },
+    {
+      name: "Composte",
+      href: "/composting",
+      current: false,
+    },
+    {
+      name: "Devis",
+      href: "/quote",
+      current: false,
+    },
+  ];
   return (
     <>
       <div className="flex flex-col justify-between h-screen">
@@ -156,36 +183,34 @@ const Layout = ({ children }) => {
                         <div className="mt-8">
                           <div className="flow-root">
                             <ul role="list" className="-my-6 space-y-4">
-                              {/* {pages.map((page, index) => (
-                                          <li key={page.name}>
-                                            <div
-                                              className="flex items-center"
-                                              key={index}
-                                            >
-                                              <a
-                                                onClick={() => {
-                                                  router.push(page.href);
-                                                  setShowMenu(false);
-                                                }}
-                                                className={`ml-4 text-md font-medium ${
-                                                  page.current
-                                                    ? "text-gray-900 dark:text-gray-50"
-                                                    : "text-gray-800 dark:text-gray-50"
-                                                }  transition cursor-pointer transform hover:translate-x-2 group`}
-                                                aria-current={
-                                                  page.current
-                                                    ? "page"
-                                                    : undefined
-                                                }
-                                              >
-                                                {page.name}
-                                                <div className="flex items-center justify-center">
-                                                  <div className="w-0 group-hover:w-full transition-all duration-500 ease-in-out h-0.5 bg-gray-900 dark:bg-gray-100 rounded-lg" />
-                                                </div>
-                                              </a>
-                                            </div>
-                                          </li>
-                                        ))} */}
+                              {pages.map((page, index) => (
+                                <li key={page.name}>
+                                  <div
+                                    className="flex items-center"
+                                    key={index}
+                                  >
+                                    <a
+                                      onClick={() => {
+                                        // router(page.href);
+                                        setShowMenu(false);
+                                      }}
+                                      className={`ml-4 text-md font-medium ${
+                                        page.current
+                                          ? "text-gray-900 dark:text-gray-50"
+                                          : "text-gray-800 dark:text-gray-50"
+                                      }  transition cursor-pointer transform hover:translate-x-2 group`}
+                                      aria-current={
+                                        page.current ? "page" : undefined
+                                      }
+                                    >
+                                      {page.name}
+                                      <div className="flex items-center justify-center">
+                                        <div className="w-0 group-hover:w-full transition-all duration-500 ease-in-out h-0.5 bg-gray-900 dark:bg-gray-100 rounded-lg" />
+                                      </div>
+                                    </a>
+                                  </div>
+                                </li>
+                              ))}
                             </ul>
                           </div>
                         </div>
