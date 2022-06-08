@@ -45,16 +45,16 @@ const QuotePage = () => {
   });
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(e)
-  }
+    console.log(e);
+  };
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try{
-      console.log(e)
-      setIsError(true)
-    } catch(e) {
-      console.log("obj:" + e)
-      setIsError(false)
+    try {
+      console.log(e);
+      setIsError(true);
+    } catch (e) {
+      console.log("obj:" + e);
+      setIsError(false);
     }
   };
 
@@ -99,7 +99,8 @@ const QuotePage = () => {
                         <input
                           className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) => handleSubmit(e)
+                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            handleSubmit(e)
                           }
                           value={form.who}
                         />
@@ -111,7 +112,8 @@ const QuotePage = () => {
                         <input
                           className="h-12 p-3 transition bg-white border-2 rounded-md dark:bg-neutral-900 border-orangeDTTV w-26 focus:outline-none"
                           autoComplete="off"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) => handleSubmit(e)
+                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            handleSubmit(e)
                           }
                           value={form.numbers}
                         />
@@ -124,7 +126,7 @@ const QuotePage = () => {
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setForm({
                               ...form,
-                              structure: e.target.value
+                              structure: e.target.value,
                             })
                           }
                         />
@@ -137,7 +139,7 @@ const QuotePage = () => {
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setForm({
                               ...form,
-                              dfunction: e.target.value
+                              dfunction: e.target.value,
                             })
                           }
                         />
@@ -150,7 +152,7 @@ const QuotePage = () => {
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setForm({
                               ...form,
-                              name: e.target.value
+                              name: e.target.value,
                             })
                           }
                         />
@@ -163,7 +165,7 @@ const QuotePage = () => {
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setForm({
                               ...form,
-                              lastname: e.target.value
+                              lastname: e.target.value,
                             })
                           }
                         />
@@ -176,7 +178,7 @@ const QuotePage = () => {
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setForm({
                               ...form,
-                              email: e.target.value
+                              email: e.target.value,
                             })
                           }
                         />
@@ -189,7 +191,7 @@ const QuotePage = () => {
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setForm({
                               ...form,
-                              phone: e.target.value
+                              phone: e.target.value,
                             })
                           }
                         />
@@ -203,7 +205,7 @@ const QuotePage = () => {
                           onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                             setForm({
                               ...form,
-                              message: e.target.value
+                              message: e.target.value,
                             })
                           }
                         />
